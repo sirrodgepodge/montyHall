@@ -10,9 +10,9 @@ var montyHall = function (numTimes, switched) {
 	}
     };
     for (var i = 0; i < numTimes; i++) {
-	var prizeDoor = doorPick(Math.random()) += 1;
+	var prizeDoor = doorPick(Math.random());
 	var pick1 = doorPick(Math.random());
-	result += (switched && pick1 === prizeDoor) || (!switched && pick1 !== prizeDoor);
+	result += (!switched && pick1 === prizeDoor) || (switched && pick1 !== prizeDoor);
     }
     return result/numTimes*100 + "% won";
 }
