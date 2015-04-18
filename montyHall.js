@@ -1,4 +1,4 @@
-var montyHall = function (numTimes, switched) {
+var montyHall = function (numTimes) {
     var result = 0;
     var doorPick = function(num){
 	if(num <= (1/3)) {
@@ -12,10 +12,11 @@ var montyHall = function (numTimes, switched) {
     for (var i = 0; i < numTimes; i++) {
 	var prizeDoor = doorPick(Math.random());
 	var pick1 = doorPick(Math.random());
-	result += (!switched && pick1 === prizeDoor) || (switched && pick1 !== prizeDoor);
+	result += (pick1 === prizeDoor);
     }
-    return result/numTimes*100 + "% won";
+    result = result/numTimes*100
+    console.log("stay won " + result + "%");
+    console.log("switch won " + (100 - result) + "%");
 }
 
-console.log("stayed: " + montyHall(1000, false));
-console.log("switched: " + montyHall(1000, true));
+montyHall(1000);
